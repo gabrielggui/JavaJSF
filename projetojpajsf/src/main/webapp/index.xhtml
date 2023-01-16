@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Olá JSF!</title>
+</h:head>
+<h:body>
+	<h1>Olá JSF!</h1>
+	<hr />
+
+	<h:form>
+		<h:panelGrid columns="2">
+		<f:facet name="header">Cadastro em JSF</f:facet>
+			<h:outputLabel value="Id "/>
+				<h:inputText value="#{pessoaBean.pessoa.id}" readonly="true" />
+			<h:outputLabel value="Nome: "/>
+				<h:inputText value="#{pessoaBean.pessoa.nome}" />
+			<h:outputLabel value="Sobrenome: "/>
+				<h:inputText value="#{pessoaBean.pessoa.sobrenome}" />
+			<h:outputLabel value="Idade: "/>
+				<h:inputText value="#{pessoaBean.pessoa.idade}" />
+
+			<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" />
+		</h:panelGrid>
+	</h:form>
+
+	<h:form>
+
+		<h:dataTable value="#{pessoaBean.listaDePessoas}" var="pessoa"
+			border="2">
+			<h:column>
+			#{pessoa.id}
+		</h:column>
+			<h:column>
+			#{pessoa.nome}
+		</h:column>
+			<h:column>
+			#{pessoa.sobrenome}
+		</h:column>
+			<h:column>
+			#{pessoa.idade}
+		</h:column>
+			<h:column>
+				<h:commandLink value="Editar">
+					<f:setPropertyActionListener value="#{pessoa}"
+						target="#{pessoaBean.pessoa}" />
+				</h:commandLink>
+			</h:column>
+			<h:column>
+				<h:commandLink value="Remover" action="#{pessoaBean.deletar}">
+					<f:setPropertyActionListener value="#{pessoa}"
+						target="#{pessoaBean.pessoa}" />
+				</h:commandLink>
+			</h:column>
+		</h:dataTable>
+
+	</h:form>
+</h:body>
+</html>
