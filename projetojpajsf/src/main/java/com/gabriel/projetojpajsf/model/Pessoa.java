@@ -12,18 +12,21 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class Pessoa implements Serializable{
+public class Pessoa implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String nome;
 	private String sobrenome;
 	private Integer idade;
+	private String sexo;
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
+	private String[] frameworks;
+	private Boolean ativo;
 
 	public Long getId() {
 		return id;
@@ -57,12 +60,36 @@ public class Pessoa implements Serializable{
 		this.idade = idade;
 	}
 
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+
 	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 
 	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
+	}
+
+	public String[] getFrameworks() {
+		return frameworks;
+	}
+
+	public void setFrameworks(String[] frameworks) {
+		this.frameworks = frameworks;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 
 	@Override

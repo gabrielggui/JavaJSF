@@ -23,7 +23,23 @@
 			<h:inputText value="#{pessoaBean.pessoa.sobrenome}" />
 			<h:outputLabel value="Idade: " />
 			<h:inputText value="#{pessoaBean.pessoa.idade}" />
-
+			<h:outputLabel value="Sexo:" />
+			<h:selectOneMenu value="#{pessoaBean.pessoa.sexo}" required="true">
+				<f:selectItem itemLabel="Selecione..." noSelectionOption="true" />
+				<f:selectItem itemValue="Masculino" />
+				<f:selectItem itemValue="Feminino" />
+			</h:selectOneMenu>
+			<h:outputLabel value="Frameworks:" />
+			<h:selectManyMenu value="#{pessoaBean.pessoa.frameworks}" style="width:150px; height: 150px;" required="true">
+				<f:selectItem itemValue="Hibernate" />
+				<f:selectItem itemValue="Spring MVC" />
+				<f:selectItem itemValue="JPA" />
+				<f:selectItem itemValue="Primefaces" />
+				<f:selectItem itemValue="JSF" />
+			</h:selectManyMenu>
+			
+			<h:outputLabel value="Ativo:" />
+			<h:selectBooleanCheckbox value="#{pessoaBean.pessoa.ativo}"/>
 			<h:commandButton value="Salvar" action="#{pessoaBean.salvar}" />
 		</h:panelGrid>
 	</h:form>
@@ -55,11 +71,16 @@
 		</h:column>
 			<h:column>
 
+				<f:facet name="header">Sexo</f:facet>
+			#{pessoa.sexo}
+		</h:column>
+			<h:column>
+
 				<f:facet name="header">Editar</f:facet>
 				<h:commandLink>
-				
-				<!-- Forma 1 -->
-				<h:graphicImage library="img" name="1.jpg" width="30"/>
+
+					<!-- Forma 1 -->
+					<h:graphicImage library="img" name="1.jpg" width="30" />
 					<f:setPropertyActionListener value="#{pessoa}"
 						target="#{pessoaBean.pessoa}" />
 				</h:commandLink>
@@ -68,9 +89,9 @@
 
 				<f:facet name="header">Remover</f:facet>
 				<h:commandLink action="#{pessoaBean.deletar}">
-				
-				<!-- Forma 2 -->
-				<h:graphicImage value="/resources/img/2.png" width="30"/>
+
+					<!-- Forma 2 -->
+					<h:graphicImage value="/resources/img/2.png" width="30" />
 					<f:setPropertyActionListener value="#{pessoa}"
 						target="#{pessoaBean.pessoa}" />
 				</h:commandLink>
