@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,11 +24,40 @@ public class Pessoa implements Serializable {
 	private String nome;
 	private String sobrenome;
 	private Integer idade;
-	private String sexo;
+	@Enumerated(EnumType.STRING)
+	private Sexo sexo;
 	@Temporal(TemporalType.DATE)
 	private Date dataNascimento;
 	private String[] frameworks;
 	private Boolean ativo;
+	private String usuario;
+	private String senha;
+	@Enumerated(EnumType.STRING)
+	private PerfilUsuario perfilUsuario;
+	
+	public PerfilUsuario getPerfilUsuario() {
+		return perfilUsuario;
+	}
+	
+	public void setPerfilUsuario(PerfilUsuario perfilUsuario) {
+		this.perfilUsuario = perfilUsuario;
+	}
+	
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
 	public Long getId() {
 		return id;
@@ -60,11 +91,11 @@ public class Pessoa implements Serializable {
 		this.idade = idade;
 	}
 
-	public String getSexo() {
+	public Sexo getSexo() {
 		return sexo;
 	}
 
-	public void setSexo(String sexo) {
+	public void setSexo(Sexo sexo) {
 		this.sexo = sexo;
 	}
 

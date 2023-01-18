@@ -29,15 +29,17 @@ public class PessoaBean {
 		this.pessoa = pessoa;
 	}
 
-	public void salvar() {
+	public String salvar() {
 		pessoa = this.dao.salvar(pessoa);
 		limparCampos();
+		return "";
 	}
 
-	public void deletar() {
+	public String deletar() {
 		this.dao.deletar(this.pessoa.getId());
 		pessoa = new Pessoa();
 		limparCampos();
+		return "";
 	}
 	
 	@PostConstruct
